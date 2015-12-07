@@ -1,0 +1,101 @@
+<?php
+?>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="css/terminal.css" rel="stylesheet">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<style>
+    #body {
+        background-color: #000;
+        border: 1px solid #000;
+        color: #00ff00;
+        padding: 8px;
+        font-family: courier new;
+    }
+</style>
+<script>
+    $(function() {
+        $( "#window" ).draggable();
+    });
+</script>
+<div id="window" style=" width: 500px" class="ui-widget-content">
+    <div id="toolbar">
+        <div class="top">
+            <div id="lights">
+                <div class="light red">
+                    <div class="glyph">×</div>
+                    <div class="shine"></div>
+                    <div class="glow"></div>
+                </div>
+                <div class="light yellow">
+                    <div class="glyph">-</div>
+                    <div class="shine"></div>
+                    <div class="glow"></div>
+                </div>
+                <div class="light green">
+                    <div class="glyph">+</div>
+                    <div class="shine"></div>
+                    <div class="glow"></div>
+                </div>
+            </div>
+            <div id="title">
+                <div class="folder">
+                    <div class="tab"></div>
+                    <div class="body"></div>
+                </div>
+                <?= $serverName ?>
+            </div>
+            <div id="bubble">
+                <div class="shine"></div>
+                <div class="glow"></div>
+            </div>
+        </div>
+    </div>
+    <textarea id="body" readonly><?=$content?></textarea>
+</div>
+<input id="hiddenTetx" type="hidden"/>
+<script>
+    function scrollDown() {
+        var psconsole = $('#body');
+        if (psconsole.length)
+            psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+    }
+    function testCheck() {
+        var __ret = getLog();
+        var countLines = __ret.countLines;
+        var strlenLastStr = __ret.strlenLastStr;
+        console.log(countLines);
+        $("#hiddenTetx").load("ajax.php", 'data=' + JSON.stringify({
+            command: '<?=$command?>',
+            app: '<?=$app?>',
+            countLines: countLines - 1,
+            strlenLastStr: strlenLastStr
+        }), function (){
+            if($('#hiddenTetx').text() !== ""){
+                $('#body').append($("#hiddenTetx").text());
+            }
+            scrollDown();
+        });
+    }
+
+    jQuery(document).ready(function () {
+        testCheck();
+    });
+
+    function getLog() {
+        var body = $('#body');
+        var lines = body.html().split("\n");
+        var countLines = lines.length;
+        var strlenLastStr = lines[countLines - 1].length;
+        return {countLines: countLines, strlenLastStr: strlenLastStr};
+    }
+
+    var handle = setInterval(function () {
+        var __ret = getLog();
+        var countLines = __ret.countLines;
+        var strlenLastStr = __ret.strlenLastStr;
+        testCheck();
+    }, 500);
+</script>

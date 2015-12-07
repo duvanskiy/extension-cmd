@@ -1,0 +1,18 @@
+{
+    "name": "devgroup/cmd-success",
+    "description": "plagin for Execute an external program",
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Alexander",
+            "email": "duvanskiy@skobeeff.ru"
+        }
+    ],
+    "require": {
+      "ballen/executioner": "2.0.*@dev"
+    },
+    "minimum-stability": "dev",
+    "require": {
+      "ballen/executioner": "2.0.*@dev"
+    }
+}

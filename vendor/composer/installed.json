@@ -1,0 +1,51 @@
+[
+    {
+        "name": "ballen/executioner",
+        "version": "2.0.x-dev",
+        "version_normalized": "2.0.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bobsta63/executioner.git",
+            "reference": "4891f6d93a488f37ac2fb9be47a27f279bc0a404"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bobsta63/executioner/zipball/4891f6d93a488f37ac2fb9be47a27f279bc0a404",
+            "reference": "4891f6d93a488f37ac2fb9be47a27f279bc0a404",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2014-04-04 11:19:18",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Ballen\\Executioner": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Bobby Allen",
+                "email": "ballen@bobbyallen.me",
+                "homepage": "http://bobbyallen.me",
+                "role": "Developer"
+            }
+        ],
+        "description": "Executioner is a PHP library for executing system processes and applications with the ability to pass extra arguments and read CLI output results.",
+        "keywords": [
+            "cli",
+            "exec",
+            "execute",
+            "execution",
+            "passthru",
+            "process",
+            "run"
+        ]
+    }
+]
