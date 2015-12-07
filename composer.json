@@ -11,8 +11,5 @@
     "require": {
       "ballen/executioner": "2.0.*@dev"
     },
-    "minimum-stability": "dev",
-    "require": {
-      "ballen/executioner": "2.0.*@dev"
-    }
+    "minimum-stability": "dev"
 }
